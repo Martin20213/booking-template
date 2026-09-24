@@ -1,0 +1,55 @@
+import type { Config } from "tailwindcss";
+
+const config: Config = {
+  content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./config/**/*.{ts,tsx}"],
+  theme: {
+    extend: {
+      colors: {
+        ink: {
+          DEFAULT: "#fff9fa", // Nagyon tiszta, világos törtfehér, leheletnyi púderes Alappal
+          surface: "#fff1f3", // Kártyák, panel elemek finom, világos háttere
+          raised: "#fee4e8",  // Kiemelt elemek, dobozok lágy púderrózsás háttere
+          line: "#f5d0d7",    // Finom, diszkrét elválasztó vonalak és szegélyek
+        },
+        paper: {
+          DEFAULT: "#2B2426", // Határozott sötét szövegszín a tökéletes olvashatóságért
+          muted: "#463d40",   // Másodlagos, finomabb, szolidabb szövegek
+        },
+        brass: {
+          DEFAULT: "#dd718e", // Elegáns púderes-mályvás kiemelőszín (gombokhoz)
+          light: "#f2a1b7",   // Világosabb hover állapot
+          dim: "#c76580",     // Sötétebb kontrasztosabb tónus
+        },
+      },
+      fontFamily: {
+        display: ["var(--font-fraunces)", "serif"],
+        sans: ["var(--font-inter)", "sans-serif"],
+      },
+      maxWidth: {
+        prose: "70ch",
+      },
+      keyframes: {
+        "fade-up": {
+          "0%": { opacity: "0", transform: "translateY(16px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        "fade-in": {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+        "reveal-line": {
+          "0%": { transform: "scaleX(0)" },
+          "100%": { transform: "scaleX(1)" },
+        },
+      },
+      animation: {
+        "fade-up": "fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+        "fade-in": "fade-in 1.2s ease forwards",
+        "reveal-line": "reveal-line 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+      },
+    },
+  },
+  plugins: [],
+};
+
+export default config;

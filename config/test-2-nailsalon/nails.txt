@@ -1,0 +1,293 @@
+/**
+ * config/business.ts
+ * ---------------------------------------------------------------------------
+ * Lumina Nails & Beauty — Műkörmös és szépségszalon konfiguráció
+ * ---------------------------------------------------------------------------
+ */
+
+export type ServiceId = string;
+
+export interface Service {
+  id: ServiceId;
+  name: string;
+  shortDescription: string;
+  durationMinutes: number;
+  priceHUF: number;
+  /** Ha true, a Szolgáltatások szekcióban kiemelve jelenik meg. */
+  featured?: boolean;
+}
+
+export interface GalleryImage {
+  src: string;
+  alt: string;
+  /** Opcionális: rács-elrendezésben mekkora helyet foglaljon (1 = normál, 2 = széles). */
+  span?: 1 | 2;
+}
+
+export interface Testimonial {
+  quote: string;
+  author: string;
+  role?: string;
+}
+
+export interface OpeningHours {
+  /** 0 = vasárnap ... 6 = szombat, az ISO hét kezdete hétfő (1) a UI-ban. */
+  day: 0 | 1 | 2 | 3 | 4 | 5 | 6;
+  label: string;
+  /** null = zárva aznap */
+  open: string | null;
+  close: string | null;
+}
+
+export interface BusinessConfig {
+  meta: {
+    name: string;
+    tagline: string;
+    seoTitle: string;
+    seoDescription: string;
+    logoText: string;
+    logoImage?: string;
+    faviconEmoji: string;
+    timeZone: string;
+  };
+
+  theme: {
+    background: string;
+    surface: string;
+    accent: string;
+    accentLight: string;
+    textPrimary: string;
+    textMuted: string;
+  };
+
+  hero: {
+    eyebrow: string;
+    headline: string;
+    subheadline: string;
+    primaryCtaLabel: string;
+    secondaryCtaLabel: string;
+    image: string;
+    imageAlt: string;
+    stat: {
+      value: string;
+      label: string;
+    };
+  };
+
+  about: {
+    heading: string;
+    paragraphs: string[];
+    image: string;
+    imageAlt: string;
+    highlights: { label: string; value: string }[];
+  };
+
+  services: Service[];
+
+  gallery: {
+    heading: string;
+    subheading: string;
+    images: GalleryImage[];
+  };
+
+  testimonials: {
+    heading: string;
+    items: Testimonial[];
+  };
+
+  contact: {
+    heading: string;
+    subheading: string;
+    address: string;
+    mapEmbedUrl?: string;
+    phone: string;
+    email: string;
+    openingHours: OpeningHours[];
+    socials: { label: string; url: string }[];
+  };
+
+  booking: {
+    heading: string;
+    subheading: string;
+    maxAdvanceDays: number;
+    minNoticeHours: number;
+    slotIntervalMinutes: number;
+    confirmationNote: string;
+  };
+
+  footer: {
+    note: string;
+  };
+}
+
+export const businessConfig: BusinessConfig = {
+  meta: {
+    name: "Lumina Nails",
+    tagline: "Prémium műkörömépítés és manikűr stúdió",
+    seoTitle: "Lumina Nails — Professzionális műköröm és manikűr Budapesten",
+    seoDescription:
+      "Tartós gél lakk, épített zselés és porcelán körmök, exkluzív nail art Budapest szívében. Foglalj időpontot online pár kattintással.",
+    logoText: "Lumina Nails",
+    faviconEmoji: "💅",
+    timeZone: "Europe/Budapest",
+  },
+
+  theme: {
+    background: "#120F10",
+    surface: "#1D1719",
+    accent: "#D4AF37",
+    accentLight: "#F3DFA2",
+    textPrimary: "#FDFBF7",
+    textMuted: "#A3979A",
+  },
+
+  hero: {
+    eyebrow: "Budapest, VI. kerület",
+    headline: "Körmök, amelyek önmagukért beszélnek.",
+    subheadline:
+      "Precíz manikűr, tartós gél lakk és egyedi nail art terveink szerint, prémium alapanyagokból. Bízd kezeinket a stílusodra.",
+    primaryCtaLabel: "Időpontfoglalás",
+    secondaryCtaLabel: "Árlistánk",
+    image:
+      "https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=1200&auto=format&fit=crop",
+    imageAlt: "Gyönyörű, ápolt műkörmök közelebbről",
+    stat: { value: "8 éve", label: "a szépségiparban" },
+  },
+
+  about: {
+    heading: "Ahol a precizitás a művészettel találkozik",
+    paragraphs: [
+      "A Lumina Nails stúdióban nincsenek sablonmegoldások. Kiemelt figyelmet fordítunk a saját természetes körmeid egészségére, miközben a legmodernebb technológiákkal és prémium alapanyagokkal dolgozunk.",
+      "Célunk, hogy minden alkalom egy kis énidő legyen számodra, ahonnan tökéletes, tartós és csodás körmökkel távozol.",
+    ],
+    image:
+      "https://images.unsplash.com/photo-1658492055212-e1acbccfca5a?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    imageAlt: "Manikűrös munka közben a szalonban",
+    highlights: [
+      { label: "Boldog vendég", value: "3500+" },
+      { label: "Színárnyalat", value: "200+" },
+      { label: "Mesterkörömös", value: "3 fő" },
+    ],
+  },
+
+  services: [
+    {
+      id: "gel-polish",
+      name: "Gél lakk készítés (Manikűrrel)",
+      shortDescription: "Orosz manikűr, körömágybőr igazítás és tartós gél lakk felvitel.",
+      durationMinutes: 60,
+      priceHUF: 7900,
+      featured: true,
+    },
+    {
+      id: "nail-extension",
+      name: "Műköröm építés (S)",
+      shortDescription: "Épített zselés vagy polygel köröm S méretig, egyszínű kivitelben.",
+      durationMinutes: 90,
+      priceHUF: 11900,
+      featured: true,
+    },
+    {
+      id: "nail-extension-l",
+      name: "Műköröm építés (M-L) + Nail Art",
+      shortDescription: "Hosszabb épített körmök egyedi mintákkal, díszítéssel, strasszokkal.",
+      durationMinutes: 120,
+      priceHUF: 14900,
+    },
+    {
+      id: "russian-manicure",
+      name: "Klasszikus / Japán manikűr",
+      shortDescription: "Géllakk nélküli, mélyen ápoló, fényesítő és regeneráló kezelés.",
+      durationMinutes: 45,
+      priceHUF: 5500,
+    },
+    {
+      id: "removal-refill",
+      name: "Töltés / Régi anyag leszedése",
+      shortDescription: "Meglévő gél lakk vagy műköröm szakszerű eltávolítása és új alap.",
+      durationMinutes: 75,
+      priceHUF: 9500,
+    },
+  ],
+
+  gallery: {
+    heading: "Munkáink",
+    subheading: "Válogatás a legutóbbi kedvenc körmökből és a stúdió hangulatából.",
+    images: [
+      {
+        src: "https://images.unsplash.com/photo-1632345031435-8727f6897d53?q=80&w=1170&auto=format&fit=crop",
+        alt: "Elegáns nude gél lakk",
+        span: 2,
+      },
+      {
+        src: "https://images.unsplash.com/photo-1610992015762-45dca7fa3a85?q=80&w=664&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        alt: "Francia manikűr modern stílusban",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?q=80&w=800&auto=format&fit=crop",
+        alt: "Szalon belső tere részlet",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1604902396830-aca29e19b067?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        alt: "Nail art díszítés közelről",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1736434518489-0eb84070017f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        alt: "Letisztult körömstúdió enteriőr",
+        span: 2,
+      },
+    ],
+  },
+
+  testimonials: {
+    heading: "Vendégeink véleményei",
+    items: [
+      {
+        quote: "Hónapok óta ide járok, és soha nem pattog le a gél lakkom! Hihetetlenül precíz és kedves a csapat.",
+        author: "Kovács Lili",
+      },
+      {
+        quote: "A legszebb francia manikűr, amit valaha kaptam. A szalon hangulatos, tiszta és nagyon exkluzív.",
+        author: "Szabó Eszter",
+      },
+      {
+        quote: "Végre egy hely, ahol a körmeim nem vékonyodnak el a reszeléstől. Csak ajánlani tudom őket!",
+        author: "Molnár Dóra",
+      },
+    ],
+  },
+
+  contact: {
+    heading: "Lépj kapcsolatba velünk",
+    subheading: "Könnyen megközelíthető helyen, az Oktogonnál várjuk a szépülni vágyókat.",
+    address: "1067 Budapest, Teréz körút 42.",
+    phone: "+36 30 555 7890",
+    email: "hello@luminanails.hu",
+    openingHours: [
+      { day: 1, label: "Hétfő", open: "08:00", close: "20:00" },
+      { day: 2, label: "Kedd", open: "08:00", close: "20:00" },
+      { day: 3, label: "Szerda", open: "08:00", close: "20:00" },
+      { day: 4, label: "Csütörtök", open: "08:00", close: "20:00" },
+      { day: 5, label: "Péntek", open: "08:00", close: "19:00" },
+      { day: 6, label: "Szombat", open: "09:00", close: "15:00" },
+      { day: 0, label: "Vasárnap", open: null, close: null },
+    ],
+    socials: [
+      { label: "Instagram", url: "https://instagram.com" },
+      { label: "Facebook", url: "https://facebook.com" },
+    ],
+  },
+
+  booking: {
+    heading: "Időpontfoglalás",
+    subheading: "Vlaszd ki a számodra szimpatikus szolgáltatást és szabad időpontot.",
+    maxAdvanceDays: 30,
+    minNoticeHours: 4,
+    slotIntervalMinutes: 30,
+    confirmationNote: "A foglalásodat e-mailben és SMS-ben is visszaigazoljuk.",
+  },
+
+  footer: {
+    note: "Lumina Nails — minőségi műkörömépítés és manikűr Budapesten.",
+  },
+};
