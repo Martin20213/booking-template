@@ -1,4 +1,4 @@
-# Prémium szolgáltatói weboldal sablon
+# Prémium szolgáltatói weboldal + online időpontfoglaló rendszer
 
 Next.js (App Router) + TypeScript + Tailwind CSS + Supabase alapú, config-vezérelt
 landing page + online időpontfoglalás. Jelen állapotban egy fiktív prémium
