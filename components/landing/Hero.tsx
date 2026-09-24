@@ -35,7 +35,7 @@ export function Hero() {
             style={{ animation: "fade-up 0.9s cubic-bezier(0.16,1,0.3,1) forwards" }}
           >
             <Link
-              href="/foglalas"
+              href="/appointment"
               className="rounded-full bg-brass px-7 py-3 text-sm font-medium text-ink transition-colors hover:bg-brass-light"
             >
               {hero.primaryCtaLabel}

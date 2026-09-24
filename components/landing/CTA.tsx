@@ -9,7 +9,7 @@ export function CTA() {
           Foglald le a következő időpontod, mielőtt betelne a naptárunk.
         </h2>
         <Link
-          href="/foglalas"
+          href="/appointment"
           className="shrink-0 rounded-full bg-brass px-8 py-4 text-sm font-medium text-ink transition-colors hover:bg-brass-light"
         >
           {businessConfig.hero.primaryCtaLabel}

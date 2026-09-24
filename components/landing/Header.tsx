@@ -30,7 +30,7 @@ export function Header() {
         </nav>
 
         <Link
-          href="/foglalas"
+          href="/appointment"
           className="rounded-full border border-brass/50 px-5 py-2 text-sm text-brass-light transition-colors hover:border-brass hover:bg-brass/10"
         >
           Időpontfoglalás
