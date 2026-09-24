@@ -61,7 +61,7 @@ egyszerű és átlátható maradjon. Új ügyfélhez ennyi a teendő:
 ```
 config/business.ts       ← Az egyetlen ügyfél-specifikus fájl
 app/page.tsx              ← Landing page (a szekciók összeállítása)
-app/foglalas/page.tsx     ← Foglalási oldal
+app/appointment/page.tsx     ← Foglalási oldal
 components/landing/*      ← Hero, Bemutatkozás, Szolgáltatások, Galéria,
                              Vélemények, Kapcsolat, CTA, Header, Footer
 components/booking/*      ← BookingWizard és az 5 lépés (szolgáltatás → dátum

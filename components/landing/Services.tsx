@@ -22,7 +22,7 @@ export function Services() {
           {services.map((service) => (
             <li key={service.id} className="group">
               <Link
-                href={`/foglalas?service=${service.id}`}
+                href={`/appointment?service=${service.id}`}
                 className="flex flex-col gap-2 py-6 transition-colors md:flex-row md:items-center md:justify-between md:gap-6"
               >
                 <div className="flex-1">
